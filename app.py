@@ -2,6 +2,9 @@ import streamlit as st
 from textblob import TextBlob
 import matplotlib.pyplot as plt
 import numpy as np
+import nltk
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
 
 # Page setup
 st.set_page_config(page_title="Sentiment Analyzer", page_icon="😊", layout="centered")
@@ -93,4 +96,5 @@ if st.button("Analyze Sentiment 🔍", type="primary"):
 # Footer
 st.divider()
 st.caption("Built with Streamlit & TextBlob | Machine Learning Portfolio Project")
+
 st.caption("👨‍💻 Created by Hikmat Abdulmumeen | Coursera ML Specialist")
