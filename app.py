@@ -2,13 +2,19 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import nltk
-from nltk.sentiment import SentimentIntensityAnalyzer
 
-# Download VADER data
-try:
-    nltk.data.find('sentiment/vader_lexicon.zip')
-except LookupError:
+# DOWNLOAD REQUIRED NLTK DATA
+@st.cache_resource
+def load_nltk_data():
+    nltk.download('punkt', quiet=True)
     nltk.download('vader_lexicon', quiet=True)
+
+load_nltk_data()
+
+from nltk.sentiment import SentimentIntensityAnalyzer
+from nltk.tokenize import sent_tokenize
+
+sia = SentimentIntensityAnalyzer()
 
 # Initialize VADER
 sia = SentimentIntensityAnalyzer()
@@ -140,3 +146,4 @@ if st.button("Analyze Sentiment 🔍", type="primary"):
 st.divider()
 st.caption("Built with Streamlit & VADER NLP | Machine Learning Portfolio Project")
 st.caption("👨‍💻 Created by Hikmat Abdulmumeen | Coursera ML Specialist")
+
